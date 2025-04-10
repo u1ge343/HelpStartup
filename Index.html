@@ -13,7 +13,7 @@
         ></a-entity>
         <a-entity
                 rotation="90 0 0"
-                position="-1.25 4.3 -0.7"
+                position="-1.25 3.3 -0.7"
                 scale="0.5 0.5 0.5"
                 gltf-model="logo4.glb"
                 material="color: #FFF; metalness: 0.5; roughness: 0.1"
@@ -31,11 +31,21 @@
     <a-entity camera></a-entity>
 </a-scene>
 
-<video id="myVideo" src="buckBunny.mp4" autoplay loop="true" style="display: none;"></video>
+<video id="myVideo" src="HelpStartuP Presents.mp4" autoplay loop="false" style="display: none;"></video>
 
 <script>
-    document.querySelector('#animatedModel').addEventListener('animationend', function () {
-        this.setAttribute('visible', 'false');
+    const videoElement = document.getElementById('myVideo');
+
+    // Play the video on user interaction
+    document.body.addEventListener('click', function () {
+        videoElement.play().catch(error => {
+            console.error('Error playing the video:', error);
+        });
+    });
+
+    // Redirect to Google after the video ends
+    videoElement.addEventListener('ended', function () {
+        window.location.href = 'https://www.google.com';
     });
 </script>
 
